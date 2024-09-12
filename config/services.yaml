@@ -1,0 +1,17 @@
+services:
+    Generator\RandomStringGenerator:
+        arguments:
+            $length: 8
+        public: true
+
+    Generator\RandomStringArrayGenerator:
+        arguments:
+            $arraySize: 3
+            $stringLength: 6
+        public: true
+
+    Converter\PatternConverter: 
+        public: true
+
+    Converter\Rot13Converter:
+        public: true
