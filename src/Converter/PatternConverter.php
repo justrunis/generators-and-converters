@@ -1,10 +1,10 @@
 <?php
-
+declare(strict_types=1);
 namespace Converter;
 
-class PatternConverter
+class PatternConverter implements ConverterInterface
 {
-    public function convert($input)
+    public function convert($input): string
     {
         if (is_array($input)) {
             return implode(', ', array_map([$this, 'convert'], $input));

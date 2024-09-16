@@ -1,17 +1,33 @@
 services:
     Generator\RandomStringGenerator:
         arguments:
-            $length: 8
+            $length: 8 
+        autowire: true
+        autoconfigure: true
         public: true
 
     Generator\RandomStringArrayGenerator:
         arguments:
             $arraySize: 3
-            $stringLength: 6
+            $randomStringGenerator: '@Generator\RandomStringGenerator'
+        autowire: false
+        autoconfigure: false
         public: true
 
-    Converter\PatternConverter: 
+    Converter\PatternConverter:
+        autowire: true
+        autoconfigure: true
         public: true
 
     Converter\Rot13Converter:
+        autowire: true
+        autoconfigure: true
         public: true
+
+    Collection\GeneratorCollection:
+        public: true 
+        calls:
+            - method: addGenerator
+              arguments: ['@Generator\RandomStringGenerator']
+            - method: addGenerator
+              arguments: ['@Generator\RandomStringArrayGenerator']

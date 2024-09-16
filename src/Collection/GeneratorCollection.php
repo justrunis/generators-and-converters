@@ -1,12 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace Collection;
+
+use Generator\GeneratorInterface;
 
 class GeneratorCollection
 {
     private array $generators = [];
 
-    public function addGenerator($generator): void
+    public function addGenerator(GeneratorInterface $generator): void
     {
         $this->generators[] = $generator;
     }

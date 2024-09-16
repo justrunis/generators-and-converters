@@ -1,8 +1,8 @@
 <?php
-
+declare(strict_types=1);
 namespace Converter;
 
-class Rot13Converter
+class Rot13Converter implements ConverterInterface
 {
     public function convert($input): string
     {

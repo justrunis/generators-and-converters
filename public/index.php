@@ -1,8 +1,7 @@
 <?php
+declare(strict_types=1);
 
 use Collection\GeneratorCollection;
-use Generator\RandomStringGenerator;
-use Generator\RandomStringArrayGenerator;
 use Converter\PatternConverter;
 use Converter\Rot13Converter;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -18,13 +17,7 @@ $loader->load('services.yaml');
 
 $container->compile();
 
-$generatorCollection = new GeneratorCollection();
-
-$randomStringGenerator = $container->get(RandomStringGenerator::class);
-$randomStringArrayGenerator = $container->get(RandomStringArrayGenerator::class);
-
-$generatorCollection->addGenerator($randomStringGenerator);
-$generatorCollection->addGenerator($randomStringArrayGenerator);
+$generatorCollection = $container->get(GeneratorCollection::class);
 
 $patternConverter = $container->get(PatternConverter::class);
 $rot13Converter = $container->get(Rot13Converter::class);

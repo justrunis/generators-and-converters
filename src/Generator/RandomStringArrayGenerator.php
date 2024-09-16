@@ -1,24 +1,23 @@
 <?php
-
+declare(strict_types=1);
 namespace Generator;
 
-class RandomStringArrayGenerator
+class RandomStringArrayGenerator implements GeneratorInterface
 {
     private int $arraySize;
-    private int $stringLength;
+    private RandomStringGenerator $randomStringGenerator;
 
-    public function __construct(int $arraySize, int $stringLength)
+    public function __construct(int $arraySize, RandomStringGenerator $randomStringGenerator)
     {
         $this->arraySize = $arraySize;
-        $this->stringLength = $stringLength;
+        $this->randomStringGenerator = $randomStringGenerator;
     }
 
     public function generate(): array
     {
-        $randomStringGenerator = new RandomStringGenerator($this->stringLength);
         $array = [];
         for ($i = 0; $i < $this->arraySize; $i++) {
-            $array[] = $randomStringGenerator->generate();
+            $array[] = $this->randomStringGenerator->generate();
         }
         return $array;
     }

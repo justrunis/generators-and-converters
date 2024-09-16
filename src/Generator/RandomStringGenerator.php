@@ -1,8 +1,8 @@
 <?php
-
+declare(strict_types=1);
 namespace Generator;
 
-class RandomStringGenerator
+class RandomStringGenerator implements GeneratorInterface
 {
     private int $length;
 
